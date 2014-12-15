@@ -4,34 +4,34 @@
   <meta charset="UTF-8">
   <title>Browserstack Extension</title>
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+  <link rel="stylesheet" href="bower_components/select2/select2.css"/>
+  <link rel="stylesheet" href="bower_components/select2/select2-bootstrap.css"/>
   <link rel="stylesheet" href="assets/css/popup.css"/>
 </head>
 <body>
   <div class="popup-content">
     <div class="container">
       <div class="row">
-        <div class="col-sm-12" id="bs-loader">
+        <div class="col-sm-12 hidden" id="bs-loader">
           loading...
         </div>
         <div class="col-sm-12 bs-app" id="bs-app">
           <form action="" id="bs-form">
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-primary active">
+                <input type="radio" name="device-type" id="desktop-browsers" autocomplete="off" checked value="desktop"> Desktop
+              </label>
+              <label class="btn btn-primary">
+                <input type="radio" name="device-type" id="mobile-browsers" autocomplete="off" value="mobiles"> Mobiles
+              </label>
+            </div>
             <div class="form-group">
               <label for="os-select">Operating System</label>
-              <select name="os" id="os-select" class="form-control">
-                <option value="a">a</option>
-                <option value="b">b</option>
-                <option value="c">c</option>
-                <option value="d">d</option>
-              </select>
+              <input type="text" name="os" id="os-select" placeholder="Select an OS...">
             </div>
             <div class="form-group">
               <label for="browser-select">Browser</label>
-              <select name="browser" id="browser-select" class="form-control">
-                <option value="a">a</option>
-                <option value="b">b</option>
-                <option value="c">c</option>
-                <option value="d">d</option>
-              </select>
+              <input name="browser" id="browser-select" placeholder="Select a browser...">
             </div>
             <div class="form-group">
               <label for="url-select">URL:</label>
@@ -42,7 +42,7 @@
             </div>
           </form>
         </div>
-        <div class="col-sm-12 bs-login" id="bs-login">
+        <div class="col-sm-12 bs-login hidden" id="bs-login">
           Login before you use this extension. Dummy!
         </div>
       </div>
@@ -50,6 +50,7 @@
   </div>
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/select2/select2.js"></script>
   <script src="assets/js/popup.js"></script>
 </body>
 </html>

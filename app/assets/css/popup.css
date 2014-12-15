@@ -1,3 +1,7 @@
 .popup-content {
   min-width: 400px;
 }
+
+.select2-container {
+  display: block;
+}
