@@ -5,7 +5,7 @@ jQuery(document).ready(function() {
   });
 
 
-    //selectors
+  //selectors
   var browserSelect = jQuery('#browser-select');
   var osSelect = jQuery('#os-select');
 
@@ -13,7 +13,7 @@ jQuery(document).ready(function() {
   var osSelectData = [];
   var browserSelectData = [];
   var globalData = null;
-  var deviceType = 'desktop';
+  var deviceType = jQuery('input[name=device-type]:checked').val();
 
   var type = (deviceType == 'desktop') ? 'browsers' : 'devices';
 
@@ -26,24 +26,14 @@ jQuery(document).ready(function() {
     data: osSelectData
   }).select2('enable', false);
 
-  jQuery('#device-type').bootstrapSwitch({
-    //inverse: true,
-    onText: ' ',
-    offText: ' ',
-    offColor: 'primary',
-    onSwitchChange: function(e, state) {
-      if(state) {
-        deviceType = 'desktop';
-      }
-      else {
-        deviceType = 'mobile';
-      }
-      loadOS();
-      browserSelectData = [];
-      browserSelect.select2({
-        data: browserSelectData
-      }).select2('enable', false);
-    }
+  //change listener for os so browsers/devices can be loaded
+  jQuery('input[name=device-type]').change(function(e) {
+    deviceType = jQuery('input[name=device-type]:checked').val();
+    loadOS();
+    browserSelectData = [];
+    browserSelect.select2({
+      data: browserSelectData
+    }).select2('enable', false);
   });
 
   //get browsers list

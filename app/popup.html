@@ -17,10 +17,18 @@
         </div>
         <div class="col-sm-12 bs-app" id="bs-app">
           <form action="" id="bs-form">
-            <div class="form-group text-center">
-              <label>Desktop</label>
-              <input name="deviceType" id="device-type" type="checkbox" checked="false"/>
-              <label>Mobile</label>
+            <!--<div class="form-group text-center">-->
+              <!--<label>Desktop</label>-->
+              <!--<input name="deviceType" id="device-type" type="checkbox" checked="false"/>-->
+              <!--<label>Mobile</label>-->
+            <!--</div>-->
+            <div class="btn-group device-type-btn-group form-group" data-toggle="buttons">
+              <label class="btn btn-primary active">
+                <input type="radio" name="device-type" id="desktop-browsers" autocomplete="off" checked value="desktop"> Desktop
+              </label>
+              <label class="btn btn-primary">
+                <input type="radio" name="device-type" id="mobile-browsers" autocomplete="off" value="mobile"> Mobiles
+              </label>
             </div>
             <div class="form-group">
               <!--<label for="os-select">Operating System</label>-->
@@ -36,8 +44,8 @@
                 <input type="text" id="url-select" name="url" class="form-control" placeholder="http://example.com"/>
               </div>
             </div>
-            <div class="form-group">
-              <a class="btn btn-primary" href="#" id="open-bs">Go</a>
+            <div class="form-group text-center">
+              <a class="btn btn-primary" href="#" id="open-bs">Start Testing</a>
             </div>
           </form>
         </div>

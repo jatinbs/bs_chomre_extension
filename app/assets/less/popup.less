@@ -4,12 +4,14 @@
 
 .popup-content {
   min-width: 400px;
+  background-image: url('../../images/bs-logo.png');
+  background-position: center center;
 }
 .bs-app {
   display: none;
 }
 .popup-content {
-  padding: 10px;
+  padding: 25px 10px 10px 10px;
 }
 
 .bs-loader {
@@ -114,8 +116,43 @@
     }
   }
 }
+.select2-drop {
+  color: #666;
+  border-radius: 0;
+  box-shadow: none;
+}
+.select2-drop-active {
+  border-color: #ddd;
+}
+.select2-search input {
+  background-color: @body-bg;
+  border-color: #ddd;
+}
 .select2-results {
-  max-height: 120px;
+  max-height: 80px;
+  .select2-highlighted {
+    background: @brand-primary;
+  }
+}
+
+
+
+.device-type-btn-group {
+  width: 100%;
+  .btn {
+    width: 50%;
+  }
+  .btn-primary {
+    background: @body-bg;
+    color: @text-color;
+    border-color: #ddd;
+    transition: all 0.2s linear;
+    &.active {
+      background: @brand-primary;
+      color: @body-bg;
+      box-shadow: none;
+    }
+  }
 }
 //.bootstrap-switch {
 //  .bootstrap-switch-label {
