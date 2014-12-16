@@ -96,41 +96,73 @@ jQuery(document).ready(function() {
 
 
   jQuery('#open-bs').click(function(e) {
+    if(validate()) {
 
-    var bs_params = {
-      zoom_to_fit: true,
-      full_screen: true,
-      autofit: true,
-      url: jQuery('#url-select').val(),
-      speed: 1,
-      start: true
-    };
+      //default common params
+      var bs_params = {
+        zoom_to_fit: true,
+        full_screen: true,
+        autofit: true,
+        url: jQuery('#url-select').val(),
+        speed: 1,
+        start: true
+      };
 
+      var i = osSelect.select2('data');
+      var osInfo = i['info'];
+      i = browserSelect.select2('data');
+      var browserInfo = i['info'];
 
-    var i = osSelect.select2('data');
-    var osInfo = i['info'];
-    i = browserSelect.select2('data');
-    var browserInfo = i['info'];
-    bs_params['os'] = osInfo['os'];
-    bs_params['browser_version'] = browserInfo['browser_version'];
+      //common data
+      bs_params['os'] = osInfo['os'];
+      bs_params['browser_version'] = browserInfo['browser_version'];
 
-    if(deviceType == 'desktop') {
-      bs_params['os_version'] = osInfo['os_version'];
-      bs_params['browser'] = browserInfo['browser'];
+      //data dependent on deviceType
+      if(deviceType == 'desktop') {
+        bs_params['os_version'] = osInfo['os_version'];
+        bs_params['browser'] = browserInfo['browser'];
+      }
+      else {
+        bs_params['os_version'] = browserInfo['os_version'];
+        bs_params['device'] = browserInfo['device'];
+      }
+
+      //open url in new tab
+      var newURL = 'http://browserstack.com/start#' + jQuery.param(bs_params);
+      chrome.tabs.create({ url: newURL });
+      e.preventDefault();
+
     }
-    else {
-      bs_params['os_version'] = browserInfo['os_version'];
-      bs_params['device'] = browserInfo['device'];
-    }
-
-    var newURL = 'http://browserstack.com/start#' + jQuery.param(bs_params);
-    chrome.tabs.create({ url: newURL });
-    e.preventDefault();
   });
 
+  //hide loader, show form
   var showBSForm = function() {
     jQuery('#bs-loader-container').hide();
     jQuery('#bs-app').fadeIn();
+  };
+
+
+  //todo: use parsley
+  var validate = function() {
+    var dataSel = osSelect.select2('data');
+    var browserSel = browserSelect.select2('data');
+
+    jQuery('.errors-list li').hide();
+
+    if(!dataSel) {
+      jQuery('#os-error').show();
+      return false;
+    }
+    else if(!browserSel) {
+      jQuery('#browser-error').show();
+      return false;
+    }
+    else if(jQuery('#url-select').val().length == 0) {
+      jQuery('#url-error').show();
+      return false;
+    }
+
+    return true;
   }
 
 

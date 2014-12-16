@@ -6444,3 +6444,15 @@ button.close {
   color: #ffffff;
   box-shadow: none;
 }
+.errors-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.errors-list li {
+  display: none;
+  padding: 5px 15px;
+  background: #d9534f;
+  color: #ffffff;
+  font-weight: 300;
+}
