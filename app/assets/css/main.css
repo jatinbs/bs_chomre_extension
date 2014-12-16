@@ -6292,7 +6292,7 @@ button.close {
   display: none;
 }
 .popup-content {
-  padding: 15px;
+  padding: 10px;
 }
 .bs-loader {
   width: 200px;
@@ -6400,6 +6400,7 @@ button.close {
   border-color: #ddd;
   line-height: 36px;
   height: 36px;
+  color: #666;
 }
 .select2-container .select2-choice .select2-arrow {
   border-radius: 0;
@@ -6407,5 +6408,5 @@ button.close {
   border: none;
 }
 .select2-results {
-  min-height: 120px;
+  max-height: 120px;
 }
