@@ -26,6 +26,18 @@ jQuery(document).ready(function() {
     data: osSelectData
   }).select2('enable', false);
 
+  jQuery('#device-type').bootstrapSwitch({
+    //offColor: 'primary',
+    //onText: '1',
+    //offText: '0',
+    inverse: true,
+    onSwitchChange: function(e, state) {
+      console.log(state);
+      console.log('yo');
+    }
+  });
+
+
   //change listener for os so browsers/devices can be loaded
   jQuery('input[name=device-type]').change(function(e) {
     deviceType = jQuery('input[name=device-type]:checked').val();

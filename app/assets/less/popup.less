@@ -1,10 +1,16 @@
+//@import "../../bower_components/bootstrap/less/variables";
+//@import "../../bower_components/bootstrap/less/mixins";
+//@import "variables";
+
 .popup-content {
   min-width: 400px;
 }
 .bs-app {
   display: none;
 }
-
+.popup-content {
+  padding: 15px;
+}
 
 .bs-loader {
   width: 200px;
@@ -93,4 +99,20 @@
 
 .select2-container {
   display: block !important;
+  .select2-choice {
+    border-radius: 0;
+    background: @body-bg;
+    box-shadow: none;
+    border-color: #ddd;
+    line-height: 36px;
+    height: 36px;
+    .select2-arrow {
+      border-radius: 0;
+      background: @body-bg;
+      border: none;
+    }
+  }
+}
+.select2-results {
+  min-height: 120px;
 }

@@ -4,6 +4,9 @@
 .bs-app {
   display: none;
 }
+.popup-content {
+  padding: 15px;
+}
 .bs-loader {
   width: 200px;
   height: 200px;
@@ -102,4 +105,7 @@
 }
 .select2-container {
   display: block !important;
+}
+.select2-container .select2-choice {
+  border-radius: 0;
 }

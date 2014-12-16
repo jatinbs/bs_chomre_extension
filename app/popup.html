@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Browserstack Extension</title>
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
   <link rel="stylesheet" href="bower_components/select2/select2.css"/>
   <link rel="stylesheet" href="bower_components/select2/select2-bootstrap.css"/>
-  <link rel="stylesheet" href="assets/css/popup.css"/>
+  <link rel="stylesheet" href="bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css"/>
+  <link rel="stylesheet" href="assets/css/main.css"/>
 </head>
 <body>
   <div class="popup-content">
@@ -17,6 +17,11 @@
         </div>
         <div class="col-sm-12 bs-app" id="bs-app">
           <form action="" id="bs-form">
+            <div class="form-group text-center">
+              <label>Desktop</label>
+              <input name="deviceType" id="device-type" type="checkbox"/>
+              <label>Mobile</label>
+            </div>
             <div class="btn-group" data-toggle="buttons">
               <label class="btn btn-primary active">
                 <input type="radio" name="device-type" id="desktop-browsers" autocomplete="off" checked value="desktop"> Desktop
@@ -51,6 +56,7 @@
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
   <script src="bower_components/select2/select2.js"></script>
+  <script src="bower_components/bootstrap-switch/dist/js/bootstrap-switch.js"></script>
   <script src="assets/js/popup.js"></script>
 </body>
 </html>

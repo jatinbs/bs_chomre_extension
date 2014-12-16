@@ -282,7 +282,7 @@ module.exports = function (grunt) {
     less: {
       dist: {
         files: {
-          'app/assets/css/popup.css': 'app/assets/less/popup.less'
+          'app/assets/css/main.css': 'app/assets/less/main.less',
         }
       }
     },
