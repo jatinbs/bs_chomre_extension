@@ -42,6 +42,10 @@ module.exports = function (grunt) {
       gruntfile: {
         files: ['Gruntfile.js']
       },
+      less: {
+        fies: ['<%= config.app %>/styles/{,*/}*.css'],
+        tasks: ['less']
+      },
       styles: {
         files: ['<%= config.app %>/styles/{,*/}*.css'],
         tasks: [],
@@ -275,6 +279,14 @@ module.exports = function (grunt) {
       }
     },
 
+    less: {
+      dist: {
+        files: {
+          'app/assets/css/popup.css': 'app/assets/less/popup.less'
+        }
+      }
+    },
+
     // Compres dist files to package
     compress: {
       dist: {
@@ -319,7 +331,8 @@ module.exports = function (grunt) {
     'uglify',
     'copy',
     'usemin',
-    'compress'
+    'compress',
+    'less'
   ]);
 
   grunt.registerTask('default', [

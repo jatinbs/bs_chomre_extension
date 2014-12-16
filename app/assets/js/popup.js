@@ -46,6 +46,7 @@ jQuery(document).ready(function() {
       osSelect.change(function(e) {
         loadBrowsers(e.val);
       });
+      showBSForm();
 
     },
     failure: function(reponse) {
@@ -126,6 +127,11 @@ jQuery(document).ready(function() {
     chrome.tabs.create({ url: newURL });
     e.preventDefault();
   });
+
+  var showBSForm = function() {
+    jQuery('#bs-loader-container').hide();
+    jQuery('#bs-app').fadeIn();
+  }
 
 
 });
