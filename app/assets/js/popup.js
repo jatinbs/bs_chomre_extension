@@ -34,7 +34,6 @@ jQuery(document).ready(function() {
     browserSelect.select2({
       data: browserSelectData
     }).select2('enable', false);
-
   });
 
   //get browsers list
@@ -61,7 +60,8 @@ jQuery(document).ready(function() {
       if(globalData[deviceType].hasOwnProperty(i)) {
         osSelectData.push({
           id: i,
-          text: globalData[deviceType][i]['os_display_name']
+          text: globalData[deviceType][i]['os_display_name'],
+          info: globalData[deviceType][i]
         })
       }
     }
@@ -81,7 +81,8 @@ jQuery(document).ready(function() {
       if(globalData[deviceType][index][type].hasOwnProperty(i)) {
         browserSelectData.push({
           id: i,
-          text: globalData[deviceType][index][type][i]['display_name']
+          text: globalData[deviceType][index][type][i]['display_name'],
+          info: globalData[deviceType][index][type][i]
         });
       }
     }
@@ -94,21 +95,34 @@ jQuery(document).ready(function() {
 
 
   jQuery('#open-bs').click(function(e) {
+
     var bs_params = {
-      os: "Windows",
-      os_version: "7",
-      browser: "IE",
-      browser_version: "8.0",
       zoom_to_fit: true,
       full_screen: true,
       autofit: true,
       url: jQuery('#url-select').val(),
-      resolution: "2048x1536",
       speed: 1,
       start: true
+    };
+
+
+    var i = osSelect.select2('data');
+    var osInfo = i['info'];
+    i = browserSelect.select2('data');
+    var browserInfo = i['info'];
+    bs_params['os'] = osInfo['os'];
+    bs_params['browser_version'] = browserInfo['browser_version'];
+
+    if(deviceType == 'desktop') {
+      bs_params['os_version'] = osInfo['os_version'];
+      bs_params['browser'] = browserInfo['browser'];
+    }
+    else {
+      bs_params['os_version'] = browserInfo['os_version'];
+      bs_params['device'] = browserInfo['device'];
     }
 
-    newURL = 'http://browserstack.com/start#' + jQuery.param(bs_params);
+    var newURL = 'http://browserstack.com/start#' + jQuery.param(bs_params);
     chrome.tabs.create({ url: newURL });
     e.preventDefault();
   });
